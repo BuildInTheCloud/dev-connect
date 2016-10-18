@@ -1,0 +1,19 @@
+{
+  "name": "dev-connect",
+  "version": "0.0.1",
+  "description": "Connection for hybrid developers",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/BuildInTheCloud/dev-connect",
+  "keywords": [
+    "Electron",
+    "mobile"
+  ],
+  "author": "BuildInTheCloud",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^1.4.1"
+  }
+}

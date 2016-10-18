@@ -1,2 +1,4 @@
 # dev-connect
-all the connection need to build modern apps
+
+
+#### License [MIT](LICENSE.md)
