@@ -1,6 +1,7 @@
 const electron = require('electron')
 const {Menu} = require('electron')
 const {ipcMain} = require('electron')
+const template = require('./settings.js').config;
 // Module to control application life.
 const app = electron.app;
 // Module to create native browser window.
@@ -18,7 +19,7 @@ function createWindow () {
   mainWindow.loadURL(`file://${__dirname}/index.html`)
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools()
+  //mainWindow.webContents.openDevTools()
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
@@ -53,51 +54,6 @@ app.on('activate', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
-const template = [
-  {
-    label: 'Ionic',
-    submenu: [
-      { label: 'Cloud Dashboard', click (item, focusedWindow) { focusedWindow.send("menu", "ionic-dashboard") } }
-    ]
-  },
-  {
-    label: 'Google/Android',
-    submenu: [
-      { label: 'Developer Dashboard', click (item, focusedWindow) { focusedWindow.send("menu", "google-play-dashboard") } },
-      { label: 'adMob', click (item, focusedWindow) { focusedWindow.send("menu", "admob") } }
-    ]
-  },
-  {
-    label: 'Windows',
-    submenu: [
-      { label: 'Store Dashboard', click (item, focusedWindow) { focusedWindow.send("menu", "windows-dashboard") } }
-    ]
-  },
-  {
-    label: 'iOS',
-    submenu: [
-      { label: 'Developer Portal', click (item, focusedWindow) { focusedWindow.send("menu", "apple-dashboard") } }
-    ]
-  },
-  {
-    label: 'Social Connections',
-    submenu: [
-      { label: 'LinkedIn', click (item, focusedWindow) { focusedWindow.send("menu", "linkedin") } }
-    ]
-  },
-  {
-    label: 'Tools',
-    submenu: [
-      { label: 'Learn More', click (item, focusedWindow) { focusedWindow.send("menu", "linkedin") } }
-    ]
-  },
-  {
-    role: 'help',
-    submenu: [
-      { label: 'Learn More', click (item, focusedWindow) { focusedWindow.send("menu", "linkedin") } }
-    ]
-  }
-]
 const menu = Menu.buildFromTemplate(template)
 Menu.setApplicationMenu(menu)
 

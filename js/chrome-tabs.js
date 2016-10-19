@@ -148,9 +148,6 @@
       });
     },
     setupEvents: function($shell) {
-      $shell.unbind('dblclick').bind('dblclick', function() {
-        return chromeTabs.addNewTab($shell);
-      });
       $shell.unbind('mouseup').bind('mouseup', function(e) {
         if (e.which === 2 && e.target.className !== 'chrome-tab-title') {
           return chromeTabs.addNewTab($shell);
@@ -168,6 +165,15 @@
           }
         });
         return $tab.find('.chrome-tab-close').unbind('click').click(function() {
+          if ($tab.length) {
+            $.each(template, function(index, element) {
+                $.each(this.submenu, function(index, element) {
+                  if (this.title == $tab.text().trim()) {
+                      $("#webPages webview#"+this.key).remove();
+                  }
+              });
+            });
+          }
           return chromeTabs.closeTab($shell, $tab);
         });
       });
